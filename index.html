@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 رسالة خاصة لزوجي 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Tahoma", sans-serif;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+    .message {
+      font-size: 24px;
+      color: #fff;
+      text-shadow: 2px 2px 4px #00000055;
+      white-space: pre-line;
+      border-right: 3px solid #fff;
+      padding: 15px;
+      max-width: 80%;
+      animation: blink 0.8s infinite;
+      line-height: 1.8;
+      min-height: 250px;
+      transition: all 0.8s ease-in-out;
+    }
+    .final {
+      font-family: "Brush Script MT", cursive;
+      font-size: 30px;
+      color: #ffe;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+      border: none;
+    }
+    .signature {
+      font-family: "Brush Script MT", cursive;
+      font-size: 42px;
+      color: rgba(255,255,255,0.8);
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      transform: rotate(-5deg);
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    @keyframes blink {
+      0% { border-color: #fff; }
+      50% { border-color: transparent; }
+      100% { border-color: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="message" id="msg"></div>
+  <div class="signature">أم كِنان 💕</div>
+
+  <script>
+    const paragraphs = [
+      "كل عام وانت بخير يا زوجي.",
+      "وأغلي ما أملك بهذه الحياة.",
+      "بل أنت الحياة بأكملها عدت ٢٣ سنة من عمرك والآن هاقد تممت ال ٢٤ سنة🥹😭.",
+      "يارب بارك لك في صحتك وحياتك ووقتك وعملك وأسرتك وان تكون ممن كتب الله له السعاده في الدارين ولم يكتب لك الشقاءُ أبدا أنت حبيبي وزوحي وقرة عيني أتعلم كم أحبك ؟",
+      "لا انت لا تعلم فأنا والله لا أستطيع ان اصف لك حبي لأنني لم اعرف ان بداخلي هذا الحب لك لم اكن اعرف ان هناك حب اكبر من حب الأم والأب.",
+      "لكن لا والله ان حب الزوج لأكبر بكثيييييير من حبهم لأن له حب خاص من نوعه أحبك يا زوجي🫂❤️ ."
+    ];
+
+    let pIndex = 0;
+    let cIndex = 0;
+    let msgDiv = document.getElementById("msg");
+
+    function typeParagraph(callback) {
+      if (cIndex < paragraphs[pIndex].length) {
+        msgDiv.innerHTML += paragraphs[pIndex].charAt(cIndex);
+        cIndex++;
+        setTimeout(() => typeParagraph(callback), 70);
+      } else {
+        pIndex++;
+        if (pIndex < paragraphs.length) {
+          setTimeout(() => {
+            msgDiv.innerHTML = "";
+            cIndex = 0;
+            typeParagraph(callback);
+          }, 3000);
+        } else {
+          callback();
+        }
+      }
+    }
+
+    function showAll() {
+      msgDiv.classList.add("final");
+      msgDiv.innerHTML = paragraphs.join("\n\n");
+    }
+
+    typeParagraph(showAll);
+  </script>
+</body>
+</html>
